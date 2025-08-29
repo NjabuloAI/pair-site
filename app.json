@@ -1,0 +1,22 @@
+{
+    "name": "bmb Pairing",
+    "description": "B.M.B-TECH WA bot, Created by bmb tech",
+    "logo": "https://github.com/novaxmd/BMB-XMD-DATA/raw/refs/heads/main/bmb.jpg",
+    "repository": "https://github.com/novaxmd/Bmb-Session/tree/main",
+    "keywords": ["BMB-TECH"],
+    "success_url": "/", 
+    "buildpacks": [{ "url": "https://github.com/heroku/heroku-buildpack-nodejs#latest" } ],
+    "env": {      
+      "PORT": {
+        "description": "Port for web app.4000,5000,3000... any!",
+        "value": "5000",
+        "required": false 
+      },
+      "MESSAGE": {
+        "description": "set session id conformation message",
+        "value": "",
+        "required": false 
+      }
+    }   
+
+}
