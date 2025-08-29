@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.listen(PORT, () => {
     console.log(`
-Bmb-Tech is Live
+Dml-Tech is Live
 
  Server running on http://localhost:` + PORT)
 })
