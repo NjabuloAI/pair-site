@@ -56,15 +56,26 @@ router.get('/', async (req, res) => {
                let b64data = Buffer.from(data).toString('base64');
                let session = await Pair_Code_By_Dml_Tech.sendMessage(Pair_Code_By_Dml_Tech.user.id, { text: ' '+ b64data });
 
-               let DML_TECH_TEXT = `
+               let DML_TECH_TEXT = ` YOUR SESSION IS SUCCESSFULLY GENERATED L! ✅ ✨
 
+💪 Empowering Your Experience with DML Tech
 
+👥 Connect & Chat with Friends
+👉 Join Free https://whatsapp.com/channel/0029Vb2hoPpDZ4Lb3mSkVI3C
 
+🌟 Support Our Work
+⭐ Give our repo a star & follow the developer here ⤵
+🔗 GitHub – https://github.com/MLILA17
 
-*🎉 SESSION GENERATED SUCCESSFULLY! ✅*
-dml Tutorials:*
-🪄 YouTube Channel https://www*
-*Together, we build the future of automation! 🚀*
+💭 Need Help or Updates?
+📢 Join our official support channel:
+WhatsApp Channel
+
+📚 Learn & Explore with Tutorials
+🪄 Check out our YouTube channel:
+https://www.youtube.com/@DaudyMussa-h1r
+
+🚀 Powered by DML — Together, we build the future of automation! 🚀
 `
  await Pair_Code_By_Dml_Tech.sendMessage(Pair_Code_By_Dml_Tech.user.id,{text:DML_TECH_TEXT},{quoted:session})
  
