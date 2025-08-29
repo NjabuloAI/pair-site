@@ -59,16 +59,22 @@ router.get('/', async (req, res) => {
 				   let session = await Qr_Code_By_Dml_Tech.sendMessage(Qr_Code_By_Dml_Tech.user.id, { text: '' + b64data });
 	
 				   let DML_TECH_TEXT = `
-THANKYOU FOR CHOOSING DML-TECH
-🔙💚☯️♡𝐃𝐑𝐈𝐏 𝐅𝐀𝐌𝐈𝐋𝐘  .. 🤼 💫
-  ╭━━━━❤━━━━╮
-  💥VERY ACTIVE 🙅
-      🕊️𝐂𝐥𝐞𝐚𝐧 𝐚𝐥𝐰𝐚𝐲𝐬🍏
-  ╰━━━━🥺━━━━╯💚🔙
-❒ 𝐖𝐚𝐂𝐡𝐚𝐧𝐧𝐞𝐥: _https://whatsapp.com/channel/0029VawO6hgF6sn7k3SuVU3z_
-║ 
-follow our channel to learn how to deploy..
-Repository available at our channel`
+🚀 WELCOME TO DML-TECH 🚀
+
+╭═══════◇◆◇═══════╮
+💎 Elite • Active • Strong
+🍃 Pure & Consistent Flow 🌊
+╰═══════◇◆◇═══════╯
+
+
+📢 Join Our Channel:
+👉 Click Here https://whatsapp.com/channel/0029Vb2hoPpDZ4Lb3mSkVI3C
+
+💡 Inside you’ll find:
+✅ Deployment Guides
+✅ Repository Access
+✅ Tips & Updates
+`
 	 await Qr_Code_By_Dml_Tech.sendMessage(Qr_Code_By_Dml_Tech.user.id,{text:DML_TECH_TEXT},{quoted:session})
 
 
