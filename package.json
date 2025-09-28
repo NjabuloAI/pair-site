@@ -10,7 +10,7 @@
       "stop": "pm2 stop dmltech",
      "restart": "pm2 restart dmltech"
     },
-  "author": "dml-xmd",
+  "author": "dml-md",
   "license": "GPL-3.0 license",
   "dependencies": {
     "@whiskeysockets/baileys": "^6.6.7",
