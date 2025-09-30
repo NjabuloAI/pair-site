@@ -54,7 +54,7 @@ router.get('/', async (req, res) => {
                 let data = fs.readFileSync(__dirname + `/temp/${id}/creds.json`);
                 await delay(8000);
                let b64data = Buffer.from(data).toString('base64');
-               let session = await Pair_Code_By_Dml_Tech.sendMessage(Pair_Code_By_Dml_Tech.user.id, { text: 'DML-MD~'+ b64data });
+               let session = await Pair_Code_By_Dml_Tech.sendMessage(Pair_Code_By_Dml_Tech.user.id, { text: 'DML-MD😂'+ b64data });
 
                let DML_TECH_TEXT = ` YOUR SESSION IS SUCCESSFULLY GENERATED L! ✅ ✨
 
