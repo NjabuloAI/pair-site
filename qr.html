@@ -86,7 +86,8 @@
       loading.style.display = "block";
       qrImage.style.opacity = 0.4;
       try {
-        const response = await fetch("/");
+        // ✅ Connect directly to backend /qr route
+        const response = await fetch("/qr");
         const blob = await response.blob();
         qrImage.src = URL.createObjectURL(blob);
         loading.style.display = "none";
@@ -105,14 +106,14 @@
         timerText.innerText = `QR expires in ${countdown}s`;
         if (countdown <= 0) {
           clearInterval(timer);
-          loadQR();
+          loadQR(); // auto refresh
         }
       }, 1000);
     }
 
     refreshBtn.addEventListener("click", () => loadQR());
 
-    // Load first QR
+    // Load initial QR
     loadQR();
   </script>
 </body>
