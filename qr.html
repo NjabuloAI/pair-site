@@ -457,7 +457,7 @@
             </div>
             
             <div class="actions">
-                <button class="btn btn-primary" id="reload-btn">
+                <button class="btn btn-primary" id="reload-btn" onclick="refreshPage()">
                     <i class="fas fa-sync-alt"></i> Generate New QR
                 </button>
                 <button class="btn btn-secondary" id="help-btn">
@@ -591,17 +591,16 @@
             startTimer();
             simulateScan();
             
-            // Reload button functionality
-            reloadBtn.addEventListener('click', function() {
-                startTimer();
-                simulateScan();
-            });
-            
             // Help button functionality
             helpBtn.addEventListener('click', function() {
                 alert('QuickScan Pro Help:\n\n• Ensure good lighting when scanning\n• Hold your device steady for 2-3 seconds\n• Make sure the entire QR code is visible\n• If problems persist, try generating a new code\n\nFor enterprise support, contact: https://dml-contact.vercel.app');
             });
         });
+
+        // Function to refresh the page
+        function refreshPage() {
+            location.reload();
+        }
     </script>
 </body>
 </html>
