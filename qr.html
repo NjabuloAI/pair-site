@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive QR Code Site</title>
+  <style>
+    body {
+      background: #f0f4f8;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .qr-container {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 6px 32px rgba(0,0,0,0.12);
+      padding: 38px 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: box-shadow .3s;
+    }
+    .qr-container:hover {
+      box-shadow: 0 8px 44px rgba(51,102,204,0.18);
+    }
+    .qr-title {
+      font-size: 1.6em;
+      font-weight: 600;
+      margin-bottom: 18px;
+      color: #3366cc;
+      text-align: center;
+    }
+    .qr-image {
+      width: 210px;
+      height: 210px;
+      margin-bottom: 18px;
+      transition: transform .2s;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(51,102,204,0.12);
+      cursor: pointer;
+    }
+    .qr-image:hover {
+      transform: scale(1.08) rotate(2deg);
+      box-shadow: 0 4px 18px rgba(51,102,204,0.24);
+    }
+    .qr-instruction {
+      font-size: 1em;
+      color: #666;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="qr-container">
+    <div class="qr-title">Scan this QR Code</div>
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=210x210&data=https://github.com/MLILA05/Zokou"
+         alt="QR Code" class="qr-image" id="qrImage">
+    <div class="qr-instruction">Hover over the QR code for an effect.<br>Click to copy the link!</div>
+  </div>
+  <script>
+    const qrImg = document.getElementById('qrImage');
+    qrImg.addEventListener('click', function() {
+      navigator.clipboard.writeText('https://github.com/MLILA05/Zokou');
+      alert('QR link copied to clipboard!');
+    });
+  </script>
+</body>
+</html>
