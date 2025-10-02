@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Njabulo Jb pair site</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Add your CSS styles here */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+    video {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      z-index: -1;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .box {
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    .centered-text {
+      text-align: center;
+    }
+    .input-container {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <video autoplay muted loop>
+    <source src="https://files.catbox.moe/dvc8y2.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <div class="container">
+    <div class="box" id="box">
+      <h3 class="centered-text">𝑺𝑬𝑺𝑺𝑰𝑶𝑵 𝑺𝑪𝑨𝑵𝑵𝑬𝑹</h3>
+      <h6 class="centered-text">𝑬𝒏𝒕𝒆𝒓 𝒀𝒐𝒖𝒓 𝑾𝒉𝒂𝒕𝒔𝒂𝒑𝒑 𝑵𝒖𝒎𝒃𝒆𝒓 𝑾𝒊𝒕𝒉 𝑪𝒐𝒖𝒏𝒕𝒓𝒚 𝑪𝒐𝒅𝒆 𝑾𝒊𝒕𝒉𝒐𝒖𝒕 𝑡(+).</h6>
+      <h6 class="centered-text">DULLAH-MD</h6>
+
+      <div class="input-container">
+        <input placeholder="Eg 255xxxxxx" type="number" id="number" name="number">
+        <button id="submit">Enter</button>
+      </div>
+
+      <a id="waiting-message" class="centered-text" style="display: none;">Getting Code...</a>
+      <br><br>
+      <main id="pair"></main>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
+  <script>
+    const pairResult = document.getElementById("pair");
+    const submitBtn = document.getElementById("submit");
+    const numberInput = document.getElementById("number");
+    const waitingMessage = document.getElementById("waiting-message");
+
+    submitBtn.addEventListener("click", async (e) => {
+      e.preventDefault();
+      if (!numberInput.value) {
+        pairResult.innerHTML = '<p style="color:red">Enter your WhatsApp number</p>';
+        return;
+      }
+      const cleanNumber = numberInput.value.replace(/[^0-9]/g, "");
+      if (cleanNumber.length < 11) {
+        pairResult.innerHTML = '<p style="color:red">Invalid Number</p>';
+        return;
+      }
+      waitingMessage.style.display = "block";
+      pairResult.innerHTML = "";
+
+      try {
+        const { data } = await axios(`/code?number=${cleanNumber}`);
+        const code = data.code || "Unavailable";
+        pairResult.innerHTML = `<p style="color:green;font-weight:bold;">CODE: <span style="color:black">${code}</span></p>`;
+        waitingMessage.style.display = "none";
+      } catch {
+        pairResult.innerHTML = '<p style="color:red">Error getting code</p>';
+        waitingMessage.style.display = "none";
+      }
+    });
+  </script>
+</body>
+</html>
