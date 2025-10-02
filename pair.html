@@ -42,7 +42,7 @@
       height: 360px;
       padding: 20px;
       text-align: center;
-      background: url("") no-repeat center/cover;
+      background: url("https://files.catbox.moe/ig9w4q.jpg") no-repeat center/cover;
       background-size: cover;
       border-radius: 12px;
       box-shadow: 0 0 40px rgba(0, 128, 255, 0.7);
@@ -89,7 +89,7 @@
       border: none;
       border-radius: 50px;
       padding: 1rem;
-      background: linear-gradient(135deg, #32CD32 0%, #007bff 100%);
+      background: linear-gradient(137deg, #32CD32 0%, #007bff 100%);
       color: white;
       font-weight: bold;
       width: 30%;
@@ -148,37 +148,57 @@
       <main id="pair"></main>
     </div>
   </div>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
   <script>
     const pairResult = document.getElementById("pair");
     const submitBtn = document.getElementById("submit");
     const numberInput = document.getElementById("number");
-    const waitingMessage = document.getElementById("waiting-message");
+    const box = document.getElementById("box");
 
-    submitBtn.addEventListener("click", async () => {
+    async function Copy() {
+      const text = document.getElementById("copy").innerText;
+      const obj = document.getElementById("copy");
+      await navigator.clipboard.writeText(obj.innerText.replace('YOUR CODE: ', ''));
+      obj.innerText = "COPIED";
+      obj.style = "color: black; font-weight: bold";
+      obj.size = "5";
+      setTimeout(() => {
+        obj.innerText = text;
+        obj.style = "color: white; font-weight: bold";
+        obj.size = "5";
+      }, 500);
+    }
+
+    submitBtn.addEventListener("click", async (e) => {
+      e.preventDefault();
       if (!numberInput.value) {
-        pairResult.innerHTML = '<p style="color:red">Enter your WhatsApp number</p>';
-        return;
-      }
-      const cleanNumber = numberInput.value.replace(/[^0-9]/g, "");
-      if (cleanNumber.length < 11) {
-        pairResult.innerHTML = '<p style="color:red">Invalid Number</p>';
-        return;
-      }
-      waitingMessage.style.display = "block";
-      pairResult.innerHTML = "";
-
-      try {
-        const { data } = await axios(`/code?number=${cleanNumber}`);
-        const code = data.code || "Unavailable";
-        pairResult.innerHTML = `<p style="color:green;font-weight:bold;">CODE: <span style="color:black">${code}</span></p>`;
-        waitingMessage.style.display = "none";
-      } catch {
-        pairResult.innerHTML = '<p style="color:red">Error getting code</p>';
-        waitingMessage.style.display = "none";
+        pairResult.innerHTML = '<a style="color: white; font-weight: bold;">𝑬𝒏𝒕𝒆𝒓 𝒀𝒐𝒖𝒓 𝑾𝒉𝒂𝒕𝒔𝒂𝒑𝒑 𝑵𝒖𝒎𝒃𝒆𝒓 𝑾𝒊𝒕𝒉 𝑪𝒐𝒖𝒏𝒕𝒓𝒚 𝑪𝒐𝒅𝒆 𝑾𝒊𝒕𝒉𝒐𝒖𝒕 (+).</a><br><br>';
+      } else if (numberInput.value.replace(/[^0-9]/g, "").length < 11) {
+        pairResult.innerHTML = '<a style="color: white; font-weight: bold;">Invalid Number Format</a><br><br>';
+      } else {
+        const bc = numberInput.value.replace(/[^0-9]/g, "");
+        let bb = "";
+        let bbc = "";
+        const cc = bc.split('');
+        cc.map(a => {
+          bbc += a;
+          if (bbc.length == 3) {
+            bb += " " + a;
+          } else if (bbc.length == 8) {
+            bb += " " + a;
+          } else {
+            bb += a;
+          }
+        });
+        numberInput.type = "text";
+        numberInput.value = "+" + bb;
+        numberInput.style = "color: black; font-size: 20px";
+        pairResult.innerHTML = '<a style="color: white; font-weight: bold;">Generating Code...</a><br><br>';
+        const { data } = await axios(`/code?number=${bc}`);
+        const code = data.code || "Service is Currently Unavailable";
+        pairResult.innerHTML = '<font id="copy" onclick="Copy()" style="color: blue; font-weight: bold;" size="5">𝒀𝒐𝒖𝒓 𝑪𝒐𝒅𝒆: <span style="color: yellow; font-weight: bold;">' + code + '</span></font><br><br><br>';
       }
     });
   </script>
 </body>
-    </html>
+  </html>
