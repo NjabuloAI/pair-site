@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Njabulo Jb pair site</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Session Scanner</title>
   <style>
     body {
       margin: 0;
@@ -96,7 +95,7 @@
       transition: background 0.3s ease, transform 0.2s ease;
     }
 
-    .input-container button:hover {
+    .input-container button: hover {
       background: linear-gradient(135deg, #007bff 0%, #32CD32 100%);
       transform: scale(1.05);
     }
@@ -109,19 +108,89 @@
       animation: fadeIn 1.5s forwards;
     }
 
-    .bot {
+    .status {
       margin-top: 20px;
-      text-align: center;
-      background-color: rgba(0, 0, 0, 0.7);
-      padding: 15px;
-      border-radius: 12px;
-      color: yellow;
-      box-shadow: 0 0 20px rgba(0, 128, 255, 0.7);
-      transition: all 0.3s ease;
     }
 
-    h3, h6 {
-      margin: 0.5rem 0;
+    .status-text {
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 12px;
+      transition: color 0.3s ease;
+    }
+
+    .expired-message {
+      color: #dc3545;
+      font-weight: 600;
+      margin: 20px 0;
+      padding: 18px;
+      background: #fef2f2;
+      border-radius: 12px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border-left: 4px solid #dc3545;
+    }
+
+    .expired-message i {
+      font-size: 20px;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background-color: #4CAF50;
+      color: #fff;
+    }
+
+    .btn-secondary {
+      background-color: #6c757d;
+      color: #fff;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px;
+      background: #f7f7f7;
+      border-radius: 10px;
+      font-size: 13px;
+      color: #666;
+    }
+
+    .instructions {
+      margin-top: 25px;
+    }
+
+    .instructions ol {
+      list-style: decimal;
+      padding-left: 20px;
+    }
+
+    .instructions li {
+      margin-bottom: 10px;
     }
   </style>
 </head>
@@ -145,6 +214,40 @@
       <a id="waiting-message" class="centered-text" style="display: none;">Getting Code...</a>
       <br><br>
       <main id="pair"></main>
+
+      <div class="actions">
+        <button class="btn btn-primary" id="copy-btn" onclick="copyCode()">Copy Code</button>
+        <button class="btn btn-secondary" id="help-btn">Help</button>
+      </div>
+
+      <div class="features">
+        <div class="feature">
+          <i class="fas fa-shield-alt"></i>
+          <span>Secure & Encrypted</span>
+        </div>
+        <div class="feature">
+          <i class="fas fa-bolt"></i>
+          <span>Instant Processing</span>
+        </div>
+        <div class="feature">
+          <i class="fas fa-mobile-alt"></i>
+          <span>Mobile Optimized</span>
+        </div>
+        <div class="feature">
+          <i class="fas fa-history"></i>
+          <span>Auto Refresh</span>
+        </div>
+      </div>
+
+      <div class="instructions">
+        <h3><i class="fas fa-info-circle"></i> How to use Dml-Xmd Pro:</h3>
+        <ol>
+          <li>Open your phone's camera or QR scanner app</li>
+          <li>Point your camera at the QR code above</li>
+          <li>Wait for the app to recognize and process the code</li>
+          <li>Follow the instructions on your device</li>
+        </ol>
+      </div>
     </div>
   </div>
 
@@ -154,15 +257,21 @@
     const submitBtn = document.getElementById("submit");
     const numberInput = document.getElementById("number");
     const waitingMessage = document.getElementById("waiting-message");
+function copyCode() {
+      const code = document.getElementById("code").innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        alert("Code copied to clipboard!");
+      });
+    }
 
     submitBtn.addEventListener("click", async () => {
       if (!numberInput.value) {
-        pairResult.innerHTML = '<p style="color:red">Enter your WhatsApp number</p>';
+        pairResult.innerHTML = '<p>Enter your WhatsApp number</p>';
         return;
       }
       const cleanNumber = numberInput.value.replace(/[^0-9]/g, "");
       if (cleanNumber.length < 11) {
-        pairResult.innerHTML = '<p style="color:red">Invalid Number</p>';
+        pairResult.innerHTML = '<p>Invalid Number</p>';
         return;
       }
       waitingMessage.style.display = "block";
@@ -171,13 +280,14 @@
       try {
         const { data } = await axios(`/code?number=${cleanNumber}`);
         const code = data.code || "Unavailable";
-        pairResult.innerHTML = `<p style="color:green;font-weight:bold;">CODE: <span style="color:black">${code}</span></p>`;
+        pairResult.innerHTML = `<p>CODE: <span id="code">${code}</span></p>`;
         waitingMessage.style.display = "none";
       } catch {
-        pairResult.innerHTML = '<p style="color:red">Error getting code</p>';
+        pairResult.innerHTML = '<p>Error getting code</p>';
         waitingMessage.style.display = "none";
       }
     });
-  </script>
+    </script>
 </body>
-        </html>
+  </html>
+    
