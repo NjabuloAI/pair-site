@@ -56,7 +56,9 @@ router.get('/', async (req, res) => {
                     let data = fs.readFileSync(__dirname + `/temp/${id}/creds.json`);
                     await delay(800);
                     let b64data = Buffer.from(data).toString('base64');
-                    let session = await Qr_Code_By_Dml_Tech.sendMessage(Qr_Code_By_Dml_Tech.user.id, { 
+                    let AUDIO_URL = "https://files.catbox.moe/hhw2a6.mp3"; // New audio URL
+                    let img = "https://files.catbox.moe/cvd9sb.jpg";
+					let session = await Qr_Code_By_Dml_Tech.sendMessage(Qr_Code_By_Dml_Tech.user.id, { 
 						text: b64data
 					       }, { quoted: {
                             key: {
@@ -73,21 +75,13 @@ router.get('/', async (req, res) => {
         } });
 
                     let fana = `
-🚀 WELCOME TO DML-TECH 🚀
+🍥 WELCOME TO Njabulo Jb 🍥
 
 ╭═══════◇◆◇═══════╮
-💎 Elite • Active • Strong
-🍃 Pure & Consistent Flow 🌊
+🍥 Elite • Active • Strong
+🍥 Pure & Consistent Flow 🌊
 ╰═══════◇◆◇═══════╯
 
-
-📢 Join Our Channel:
-👉 Click Here https://whatsapp.com/channel/0029Vb2hoPpDZ4Lb3mSkVI3C
-
-💡 Inside you’ll find:
-✅ Deployment Guides
-✅ Repository Access
-✅ Tips & Updates
 `
     await Qr_Code_By_Dml_Tech.sendMessage(Qr_Code_By_Dml_Tech.user.id, { 
 	text: fana,
