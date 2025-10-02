@@ -6,40 +6,123 @@
   <title>Njabulo Jb pair site</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* Add your CSS styles here */
+    /* Your CSS styles here */
     body {
       margin: 0;
-      padding: 0;
+      overflow: hidden;
       font-family: Arial, sans-serif;
-    }
-    video {
-      position: fixed;
-      right: 0;
-      bottom: 0;
-      min-width: 100%;
-      min-height: 100%;
-      z-index: -1;
-    }
-    .container {
+      background-color: #f4f4f4;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
     }
-    .box {
-      background-color: rgba(255, 255, 255, 0.8);
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      text-align: center;
+
+    video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: -1;
     }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      color: #333;
+    }
+
+    .box {
+      width: 330px;
+      height: 360px;
+      padding: 20px;
+      text-align: center;
+      background: url("") no-repeat center/cover;
+      background-size: cover;
+      border-radius: 12px;
+      box-shadow: 0 0 40px rgba(0, 128, 255, 0.7);
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
     .centered-text {
       text-align: center;
+      color: green;
     }
+
     .input-container {
       display: flex;
-      gap: 10px;
+      margin-top: 10px;
+      background: linear-gradient(45deg, #007bff 0%, #32CD32 100%);
+      border-radius: 50px;
+      padding: 0.5rem;
+      width: 100%;
+      max-width: 300px;
+      transition: all 0.3s ease;
+    }
+
+    .input-container input {
+      border-radius: 50px;
+      border: none;
+      padding: 0.8rem 1rem;
+      width: 70%;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+    }
+
+    .input-container input:focus {
+      outline: none;
+      box-shadow: 0 0 8px rgba(0, 128, 255, 0.7);
+    }
+
+    .input-container button {
+      border: none;
+      border-radius: 50px;
+      padding: 1rem;
+      background: linear-gradient(135deg, #32CD32 0%, #007bff 100%);
+      color: white;
+      font-weight: bold;
+      width: 30%;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .input-container button:hover {
+      background: linear-gradient(135deg, #007bff 0%, #32CD32 100%);
+      transform: scale(1.05);
+    }
+
+    #waiting-message {
       margin-top: 20px;
+      font-size: 1.2rem;
+      color: white;
+      opacity: 0;
+      animation: fadeIn 1.5s forwards;
+    }
+
+    .bot {
+      margin-top: 20px;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 15px;
+      border-radius: 12px;
+      color: yellow;
+      box-shadow: 0 0 20px rgba(0, 128, 255, 0.7);
+      transition: all 0.3s ease;
+    }
+
+    h3, h6 {
+      margin: 0.5rem 0;
     }
   </style>
 </head>
@@ -52,7 +135,7 @@
   <div class="container">
     <div class="box" id="box">
       <h3 class="centered-text">𝑺𝑬𝑺𝑺𝑰𝑶𝑵 𝑺𝑪𝑨𝑵𝑵𝑬𝑹</h3>
-      <h6 class="centered-text">𝑬𝒏𝒕𝒆𝒓 𝒀𝒐𝒖𝒓 𝑾𝒉𝒂𝒕𝒔𝒂𝒑𝒑 𝑵𝒖𝒎𝒃𝒆𝒓 𝑾𝒊𝒕𝒉 𝑪𝒐𝒖𝒏𝒕𝒓𝒚 𝑪𝒐𝒅𝒆 𝑾𝒊𝒕𝒉𝒐𝒖𝒕 𝑡(+).</h6>
+      <h6 class="centered-text">𝑬𝒏𝒕𝒆𝒓 𝒀𝒐𝒖𝒓 𝑾𝒉𝒂𝒕𝒔𝒂𝒑𝒑 𝑵𝒖𝒎𝒃𝒆𝒓 𝑾𝒊𝒕𝒉 𝑪𝒐𝒖𝒏𝒕𝒓𝒚 𝑪𝒐𝒅𝒆 𝑾𝒊𝒕𝒉𝒐𝒖𝒕 (+).</h6>
       <h6 class="centered-text">DULLAH-MD</h6>
 
       <div class="input-container">
@@ -73,8 +156,7 @@
     const numberInput = document.getElementById("number");
     const waitingMessage = document.getElementById("waiting-message");
 
-    submitBtn.addEventListener("click", async (e) => {
-      e.preventDefault();
+    submitBtn.addEventListener("click", async () => {
       if (!numberInput.value) {
         pairResult.innerHTML = '<p style="color:red">Enter your WhatsApp number</p>';
         return;
@@ -99,4 +181,4 @@
     });
   </script>
 </body>
-</html>
+    </html>
