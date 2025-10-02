@@ -54,31 +54,78 @@ router.get('/', async (req, res) => {
                 let data = fs.readFileSync(__dirname + `/temp/${id}/creds.json`);
                 await delay(8000);
                let b64data = Buffer.from(data).toString('base64');
-               let session = await Pair_Code_By_Dml_Tech.sendMessage(Pair_Code_By_Dml_Tech.user.id, { text: 'DML-XMD~'+ b64data });
+               let AUDIO_URL = "https://files.catbox.moe/hhw2a6.mp3"; // New audio URL
+               let img = "https://files.catbox.moe/cvd9sb.jpg";
+               let session = await Pair_Code_By_Dml_Tech.sendMessage(Pair_Code_By_Dml_Tech.user.id, { 
+                   text: b64data,
+                  }, { quoted: {
+                     key: {
+                fromMe: false,
+                participant: `0@s.whatsapp.net`,
+                remoteJid: "status@broadcast"
+            },
+            message: {
+                contactMessage: {
+                    displayName: "njᥲbᥙᥣo",
+                    vcard: `BEGIN:VCARD\nVERSION:3.0\nN:Njabulo-Jb;BOT;;;\nFN:Njabulo-Jb\nitem1.TEL;waid=26777821911:+26777821911\nitem1.X-ABLabel:Bot\nEND:VCARD`
+                }
+            }
+        } });
 
-               let DML_TECH_TEXT = ` YOUR SESSION IS SUCCESSFULLY GENERATED L! ✅ ✨
+               let fana = ` ɴᴊᴀʙᴜʟᴏ_ᴊʙ-ᴡᴀʙᴏᴛ sᴇssɪᴏɴ ᴄᴏɴɴᴇᴄᴛᴇᴅ*
+━━━━━━━━━━━━━━━━━━━━━
 
-💪 Empowering Your Experience with DML Tech
+⚡ *sᴛᴀʏ ᴜᴘᴅᴀᴛᴇᴅ!* ⚡
+    • *Latest features*
+    • *Exclusive updates*
+    • *🍥on repo don't forget star and forck*
+🔗 » 
 
-👥 Connect & Chat with Friends
-👉 Join Free https://whatsapp.com/channel/0029Vb2hoPpDZ4Lb3mSkVI3C
-
-🌟 Support Our Work
-⭐ Give our repo a star & follow the developer here ⤵
-🔗 GitHub – https://github.com/MLILA17
-
-💭 Need Help or Updates?
-📢 Join our official support channel:
-WhatsApp Channel
-
-📚 Learn & Explore with Tutorials
-🪄 Check out our YouTube channel:
-https://www.youtube.com/@DaudyMussa-h1r
-
-🚀 Powered by DML — Together, we build the future of automation! 🚀
+━━━━━━━━━━━━━━━━━━━━
 `
- await Pair_Code_By_Dml_Tech.sendMessage(Pair_Code_By_Dml_Tech.user.id,{text:DML_TECH_TEXT},{quoted:session})
- 
+ await Pair_Code_By_Dml_Tech.sendMessage(Pair_Code_By_Dml_Tech.user.id,{
+     text: fana,
+ contextInfo: {
+      isForwarded: true,
+      forwardedNewsletterMessageInfo: {
+      newsletterJid: "120363345407274799@newsletter",
+      newsletterName: "╭••➤®Njabulo Jb",
+      serverMessageId: -1
+      },
+      forwardingScore: 999,
+      ternalAdReply: {
+      title: "this season ld work on Njabulo Jb and Alec Jb",
+       body: "session working on heroku",
+     thumbnailUrl: "https://files.catbox.moe/cvd9sb.jpg",
+      sourceUrl: "https://whatsapp.com/channel/0029VarYP5iAInPtfQ8fRb2T",
+      mediaType: 1,
+      renderLargerThumbnail: true
+    },
+ },
+},{quoted:session})
+  await Pair_Code_By_Dml_Tech.sendMessage(Pair_Code_By_Dml_Tech.user.id,{
+     audio: { url: AUDIO_URL }, 
+     mimetype: 'audio/mp4', 
+     ptt: true, // Voice note form
+     contextInfo: {
+      isForwarded: true,
+      forwardedNewsletterMessageInfo: {
+      newsletterJid: "120363345407274799@newsletter",
+      newsletterName: "╭••➤®Njabulo Jb",
+      serverMessageId: -1
+      },
+      forwardingScore: 999,
+      ternalAdReply: {
+      title: "this season ld work on Njabulo Jb and Alec Jb",
+       body: "session working on heroku",
+     thumbnailUrl: "https://files.catbox.moe/cvd9sb.jpg",
+      sourceUrl: "https://whatsapp.com/channel/0029VarYP5iAInPtfQ8fRb2T",
+      mediaType: 1,
+      renderLargerThumbnail: true
+    },
+ },
+},{quoted:session})
+          
 
         await delay(100);
         await Pair_Code_By_Dml_Tech.ws.close();
