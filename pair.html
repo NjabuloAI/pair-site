@@ -48,6 +48,63 @@
       animation: fadeIn 1s forwards;
     }
 
+            .instructions {
+            margin-top: 30px;
+            padding: 20px;
+            background: var(--light-bg);
+            border-radius: 14px;
+            text-align: left;
+            border-left: 4px solid var(--success-color);
+        }
+
+        .instructions h3 {
+            font-size: 16px;
+            color: var(--dark-text);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .instructions h3 i {
+            color: var(--success-color);
+        }
+
+        .instructions ol {
+            padding-left: 20px;
+            font-size: 14px;
+            color: var(--medium-text);
+        }
+
+        .instructions li {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            background: var(--light-bg);
+            border-radius: 10px;
+            font-size: 13px;
+            color: var(--medium-text);
+        }
+
+        .feature i {
+            color: var(--success-color);
+            font-size: 16px;
+        }
+    
+
     @keyframes fadeIn {
       0% { opacity: 0; }
       100% { opacity: 1; }
@@ -162,37 +219,6 @@
       color: #fff;
     }
 
-    .features {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-top: 25px;
-        }
-
-        .feature {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px;
-            background: var(--light-bg);
-            border-radius: 10px;
-            font-size: 13px;
-            color: var(--medium-text);
-        }
-
-
-    .instructions {
-      margin-top: 25px;
-    }
-
-    .instructions ol {
-      list-style: decimal;
-      padding-left: 20px;
-    }
-
-    .instructions li {
-      margin-bottom: 10px;
-    }
   </style>
 </head>
 <body>
@@ -220,7 +246,7 @@
         <button class="btn btn-primary" id="copy-btn" onclick="copyCode()">𝐂𝐨𝐩𝐲 𝑪𝒐𝒅𝒆</button>
         <button class="btn btn-secondary" id="help-btn">𝐨𝐰𝐧𝐞𝐫 𝐡𝐞𝐥𝐩</button>
       </div>
-
+      
       <div class="features">
                 <div class="feature">
                     <i class="fas fa-shield-alt"></i>
@@ -240,18 +266,18 @@
                 </div>
             </div>
             
-
-      <div class="instructions">
-        <h3><i class="fas fa-info-circle"></i> How to use Njabulo Jb Pro:</h3>
-        <ol>
-          <li>Open your phone's camera or QR scanner app</li>
-          <li>Point your camera at the QR code above</li>
-          <li>Wait for the app to recognize and process the code</li>
-          <li>Follow the instructions on your device</li>
-        </ol>
-      </div>
-    </div>
+            <div class="instructions">
+                <h3><i class="fas fa-info-circle"></i> How to use Dml-Xmd Pro:</h3>
+                <ol>
+                    <li>Open your phone's camera or QR scanner app</li>
+                    <li>Point your camera at the QR code above</li>
+                    <li>Wait for the app to recognize and process the code</li>
+                    <li>Follow the instructions on your device</li>
+                </ol>
+            </div>
+        </div>
   </div>
+  
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
   <script>
