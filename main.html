@@ -293,6 +293,24 @@
       text-align: center;
     }
 
+    .features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            background: var(--light-bg);
+            border-radius: 10px;
+            font-size: 13px;
+            color: var(--medium-text);
+        }
+
     @media (max-width: 768px) {
       header {
         padding: 1rem 1.5rem;
@@ -348,6 +366,25 @@
       </div>
     </div>
 
+      <div class="features">
+                <div class="feature">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Secure & Encrypted</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-bolt"></i>
+                    <span>Instant Processing</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>Mobile Optimized</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-history"></i>
+                    <span>Auto Refresh</span>
+                </div>
+            </div>
+            
     <div class="note">
       If you encounter any issues, please contact the developer for support.
     </div>
