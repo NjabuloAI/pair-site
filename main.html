@@ -18,6 +18,15 @@
       --transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
       --glow: 0 0 15px rgba(0, 212, 255, 0.3);
     }
+    video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
 
     *, *::before, *::after {
       box-sizing: border-box;
@@ -325,6 +334,9 @@
   </style>
 </head>
 <body>
+  <video autoplay muted loop>
+    <source src="https://files.catbox.moe/jax3eg.mp4" type="video/mp4">
+    Your browser does not support the video tag.
   <header>
     <div class="logo">Njabulo_Jb</div>
     <div class="status">
