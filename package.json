@@ -1,5 +1,5 @@
 {
-    "description": "pair-site",
+    "description": "dml",
     "main": "./dml.js",
   "engines" : { 
     "npm" : ">=9.7.2",
@@ -8,15 +8,12 @@
     "scripts": {
     "start": "node dml.js"
   },
-  "author": "NjabuloAI",
+  "author": "dml",
   "license": "GPL-3.0 license",
   "dependencies": {
-    "@whiskeysockets/baileys": "npm:baileys@6.7.20",   
-    "@fizzxydev/baileys-pro": "^8.7.1",
-    "@octokit/rest": "^22.0.0",
-    "@aws-sdk/client-s3": "^3.896.0",
+    "@whiskeysockets/baileys":"npm:baileys@6.7.20",
+    "maher-zubair-baileys": "^6.6.5",
     "qrcode": "^1.5.3",
-    "aws-sdk": "^2.1692.0", 
     "awesome-phonenumber": "^2.64.0",
     "pino": "^8.1.0",
     "phone" : "3.1.30",
